@@ -19,8 +19,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 360,
+        "x": 520,
+        "y": 540,
         "wires": [
             [
                 "73e52a0ce58b7db5"
@@ -36,8 +36,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 940,
-        "y": 820,
+        "x": 1200,
+        "y": 700,
         "wires": [
             [
                 "4af531bc88d1b21d"
@@ -56,8 +56,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1110,
-        "y": 900,
+        "x": 1370,
+        "y": 780,
         "wires": []
     },
     {
@@ -69,8 +69,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 630,
-        "y": 820,
+        "x": 930,
+        "y": 700,
         "wires": [
             [
                 "aaa92c1cbbd7e3c1"
@@ -89,8 +89,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 770,
-        "y": 900,
+        "x": 1070,
+        "y": 780,
         "wires": []
     },
     {
@@ -102,8 +102,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 260,
-        "y": 820,
+        "x": 630,
+        "y": 700,
         "wires": [
             [
                 "a1108d90d7e5ac22"
@@ -122,8 +122,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 400,
-        "y": 900,
+        "x": 770,
+        "y": 780,
         "wires": []
     },
     {
@@ -142,11 +142,11 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 470,
-        "y": 360,
+        "x": 690,
+        "y": 540,
         "wires": [
             [
-                "194d418d6d627dba"
+                "172ffcd47edf5bf2"
             ]
         ]
     },
@@ -171,8 +171,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 120,
-        "y": 360,
+        "x": 360,
+        "y": 540,
         "wires": [
             [
                 "868e0cd51c90cbb0"
@@ -191,8 +191,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 760,
-        "y": 360,
+        "x": 1270,
+        "y": 540,
         "wires": [
             [
                 "9d820f1775b96df2",
@@ -229,8 +229,8 @@
                 "valueValue": ""
             }
         ],
-        "x": 1000,
-        "y": 360,
+        "x": 1510,
+        "y": 540,
         "wires": [
             [
                 "c2f2f6288945fa83"
@@ -250,8 +250,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1180,
-        "y": 400,
+        "x": 1690,
+        "y": 600,
         "wires": []
     },
     {
@@ -267,8 +267,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 440,
+        "x": 1490,
+        "y": 600,
         "wires": []
     },
     {
@@ -283,8 +283,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
-        "y": 180,
+        "x": 830,
+        "y": 360,
         "wires": [
             [
                 "454955bbf15dc676",
@@ -321,8 +321,8 @@
                 "valueValue": ""
             }
         ],
-        "x": 760,
-        "y": 180,
+        "x": 1050,
+        "y": 360,
         "wires": [
             [
                 "ae2233d0f1ba4ee6"
@@ -342,8 +342,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 950,
-        "y": 240,
+        "x": 1240,
+        "y": 440,
         "wires": []
     },
     {
@@ -359,8 +359,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 730,
-        "y": 260,
+        "x": 1020,
+        "y": 440,
         "wires": []
     },
     {
@@ -380,8 +380,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 340,
-        "y": 180,
+        "x": 650,
+        "y": 360,
         "wires": [
             [
                 "935e568b8b465b8d"
@@ -400,8 +400,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
-        "y": 620,
+        "x": 860,
+        "y": 540,
         "wires": [
             [
                 "210a5050cdbcd666",
@@ -422,38 +422,9 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
-        "y": 640,
+        "x": 1050,
+        "y": 600,
         "wires": []
-    },
-    {
-        "id": "45728e28b4e0e38c",
-        "type": "inject",
-        "z": "2ac5ed59b103973f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 300,
-        "y": 620,
-        "wires": [
-            [
-                "172ffcd47edf5bf2"
-            ]
-        ]
     },
     {
         "id": "ddd7706c5eb59d47",
@@ -484,8 +455,8 @@
                 "valueValue": ""
             }
         ],
-        "x": 770,
-        "y": 600,
+        "x": 1050,
+        "y": 540,
         "wires": [
             [
                 "b6e7c92aac8213cc",
@@ -505,33 +476,33 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 960,
-        "y": 640,
+        "x": 1250,
+        "y": 600,
         "wires": []
     },
     {
-        "id": "194d418d6d627dba",
+        "id": "5667a1a22cc2cc96",
         "type": "function",
         "z": "2ac5ed59b103973f",
         "name": "function 5",
-        "func": "const payload = JSON.parse(msg.payload);\nconst accessToken = payload.access_token;\n\n// Create a new object to hold the request payload\nconst requestPayload = {\n    method: \"WEB\",\n    msisdn: \"tel:+94769455060\" \n};\n\n// Assign the request payload to the msg object\nmsg.payload = {\n    request: requestPayload\n};\n\nreturn msg;\n",
+        "func": "const baseUrl = \"https://ideabiz.lk/\";\nconst version = \"v3\";\nconst endpoint = \"status\";\nconst msisdn = \"tel:+94766691500\";\nconst payload = JSON.parse(msg.payload);\nconst accessToken = payload.access_token;\nflow.set(\"accessToken\", accessToken);\n\n\nconst url = `${baseUrl}apicall/subscription/${version}/${endpoint}/${msisdn}`;\n\n\nmsg.method = \"POST\";\nmsg.url = url;\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = `Bearer ${accessToken}`;\n\n\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 720,
+        "x": 520,
+        "y": 940,
         "wires": [
             [
-                "273c935c416988fc",
-                "0780799b69220041"
+                "0b83b5e9fae8a257",
+                "2933f54741faa0e8"
             ]
         ]
     },
     {
-        "id": "273c935c416988fc",
+        "id": "0b83b5e9fae8a257",
         "type": "debug",
         "z": "2ac5ed59b103973f",
         "name": "debug 12",
@@ -539,22 +510,23 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
-        "y": 760,
+        "x": 690,
+        "y": 1000,
         "wires": []
     },
     {
-        "id": "0780799b69220041",
+        "id": "2933f54741faa0e8",
         "type": "http request",
         "z": "2ac5ed59b103973f",
         "name": "",
-        "method": "POST",
+        "method": "use",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "https://ideabiz.lk/apicall/subscription/v3/subscribe",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -569,28 +541,51 @@
                 "valueValue": ""
             },
             {
-                "keyType": "Authorization",
-                "keyValue": "",
-                "valueType": "msg",
-                "valueValue": "payload.access_token"
-            },
-            {
                 "keyType": "Content-Type",
                 "keyValue": "",
                 "valueType": "application/json",
                 "valueValue": ""
             }
         ],
-        "x": 550,
-        "y": 720,
+        "x": 690,
+        "y": 940,
         "wires": [
             [
-                "d88e453faee76c28"
+                "d87ed0c8a2952e45"
             ]
         ]
     },
     {
-        "id": "d88e453faee76c28",
+        "id": "92006cd5c5d2e3f9",
+        "type": "inject",
+        "z": "2ac5ed59b103973f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 360,
+        "y": 940,
+        "wires": [
+            [
+                "5667a1a22cc2cc96"
+            ]
+        ]
+    },
+    {
+        "id": "d87ed0c8a2952e45",
         "type": "debug",
         "z": "2ac5ed59b103973f",
         "name": "debug 13",
@@ -601,8 +596,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 740,
-        "y": 760,
+        "x": 870,
+        "y": 1000,
         "wires": []
     }
 ]
