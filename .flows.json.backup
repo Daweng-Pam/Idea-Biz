@@ -11,7 +11,7 @@
         "id": "868e0cd51c90cbb0",
         "type": "function",
         "z": "2ac5ed59b103973f",
-        "name": "function 1",
+        "name": "SET CREATE TOKEN REQUEST",
         "func": "const baseUrl = \"https://ideabiz.lk/\";\nconst apiKey = \"uGeJ3LUjwF3nECIL0KOtE0_Hx2wa:9MrlYxoAX_HAs66MER2IMgcVpFQa\";\nconst username = \"ShoutOutTest\";\nconst password = \"qwerty2023\";\n\nmsg.url = `${baseUrl}apicall/token`;\nmsg.method = \"POST\";\nmsg.headers = {\n    \"Content-Type\": \"application/x-www-form-urlencoded\",\n    \"Authorization\": `Basic ${Buffer.from(apiKey).toString('base64')}`\n};\n\nmsg.payload = `grant_type=password&username=${username}&password=${password}&scope=PRODUCTION`;\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
@@ -19,7 +19,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 520,
+        "x": 460,
         "y": 540,
         "wires": [
             [
@@ -56,7 +56,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1370,
+        "x": 1340,
         "y": 780,
         "wires": []
     },
@@ -69,7 +69,7 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 930,
+        "x": 950,
         "y": 700,
         "wires": [
             [
@@ -102,7 +102,7 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 630,
+        "x": 670,
         "y": 700,
         "wires": [
             [
@@ -122,7 +122,7 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 770,
+        "x": 800,
         "y": 780,
         "wires": []
     },
@@ -130,7 +130,7 @@
         "id": "73e52a0ce58b7db5",
         "type": "http request",
         "z": "2ac5ed59b103973f",
-        "name": "",
+        "name": "GET TOKEN REQUEST",
         "method": "use",
         "ret": "txt",
         "paytoqs": "ignore",
@@ -142,10 +142,11 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 690,
+        "x": 730,
         "y": 540,
         "wires": [
             [
+                "b662d73fdb6cf7a6",
                 "172ffcd47edf5bf2"
             ]
         ]
@@ -154,7 +155,7 @@
         "id": "b62f945b0454ad6b",
         "type": "inject",
         "z": "2ac5ed59b103973f",
-        "name": "",
+        "name": "START",
         "props": [
             {
                 "p": "payload"
@@ -171,7 +172,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 360,
+        "x": 230,
         "y": 540,
         "wires": [
             [
@@ -183,7 +184,7 @@
         "id": "33be6c56ab2be27f",
         "type": "function",
         "z": "2ac5ed59b103973f",
-        "name": "function 2",
+        "name": "SET SEND MESSAGE REQUEST",
         "func": "const accessToken = flow.get(\"accessToken\");\n// const refreshToken = payload.refresh_token;\n// const scope = payload.scope;\n// const tokenType = payload.token_type;\n// const expiresIn = payload.expires_in;\n\n// // Store the information in a variable\n// const tokenInfo = {\n//     accessToken: accessToken,\n//     refreshToken: refreshToken,\n//     scope: scope,\n//     tokenType: tokenType,\n//     expiresIn: expiresIn\n// };\n\nconst baseUrl = \"https://ideabiz.lk/\";\nconst port = \"87719\";\nconst version = \"v3\";\nmsg.url = `${baseUrl}apicall/smsmessaging/${version}/outbound/${port}${port}/requests`;\nmsg.method = \"POST\";\n\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = `Bearer ${accessToken}`;\n\nconst jsonPayload = {\n    \"outboundSMSMessageRequest\": {\n        \"address\": [\n            \"+ 94769455060\"\n        ],\n        \"senderAddress\": \"tel:+ 94766173344:87719\",\n        \"outboundSMSTextMessage\": {\n            \"message\": \"testing\"\n        },\n        \"clientCorrelator\": \"123456\",\n        \"receiptRequest\": {\n            \"notifyURL\": \"http://127.0.0.1:1883/ideabiz/smsresponse\",\n            \"callbackData\": \"Test Successful\"\n        },\n        \"senderName\": \"SHOUTOUT\"\n    }\n};\n\nmsg.payload = jsonPayload;\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
@@ -191,7 +192,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1270,
+        "x": 1520,
         "y": 540,
         "wires": [
             [
@@ -204,7 +205,7 @@
         "id": "6e80e34927e180f5",
         "type": "http request",
         "z": "2ac5ed59b103973f",
-        "name": "",
+        "name": "SEND MESSAGE REQUEST",
         "method": "use",
         "ret": "txt",
         "paytoqs": "ignore",
@@ -229,7 +230,7 @@
                 "valueValue": ""
             }
         ],
-        "x": 1510,
+        "x": 1830,
         "y": 540,
         "wires": [
             [
@@ -241,7 +242,7 @@
         "id": "c2f2f6288945fa83",
         "type": "debug",
         "z": "2ac5ed59b103973f",
-        "name": "debug 5",
+        "name": "SEND MESSAGE RESPONSE",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -250,7 +251,7 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1690,
+        "x": 1910,
         "y": 600,
         "wires": []
     },
@@ -258,7 +259,7 @@
         "id": "9d820f1775b96df2",
         "type": "debug",
         "z": "2ac5ed59b103973f",
-        "name": "debug 6",
+        "name": "SET SEND MESSAGE PAYLOAD",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -267,7 +268,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1490,
+        "x": 1580,
         "y": 600,
         "wires": []
     },
@@ -392,15 +393,15 @@
         "id": "172ffcd47edf5bf2",
         "type": "function",
         "z": "2ac5ed59b103973f",
-        "name": "function 4",
-        "func": "const baseUrl = \"https://ideabiz.lk/\";\nconst version = \"v3\";\nconst endpoint = \"subscribe\";\nconst payload = JSON.parse(msg.payload);\nconst accessToken = payload.access_token;\nflow.set(\"accessToken\", accessToken);\n\nconst msisdn = \"+94766691500\";\n\nconst url = `${baseUrl}apicall/subscription/${version}/${endpoint}`;\n\nconst requestBody = {\n    \"method\": \"WEB\",\n    \"msisdn\": `tel:${msisdn}`,\n    \"serviceID\": \"34dafb2f-7129-4978-a72e-65dc5c48dd1c\",\n    \"receiptRequest\": {\n        \"notifyURL\": \"http://127.0.0.1:1883/ideabiz/smsresponse\",\n        \"callbackData\": \"Test Successful\"\n    }     \n};\n\n\nmsg.method = \"POST\";\nmsg.url = url;\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = `Bearer ${accessToken}`;\nmsg.payload = JSON.stringify(requestBody);\n\nreturn msg;\n",
+        "name": "SET ADD SUB REQUEST",
+        "func": "const baseUrl = \"http://ideabiz.lk/\";\nconst version = \"v3\";\nconst endpoint = \"subscribe\";\nconst payload = JSON.parse(msg.payload);\nconst accessToken = payload.access_token;\nflow.set(\"accessToken\", accessToken);\n\nconst msisdn = \"+94766691500\";\n\nconst url = `${baseUrl}apicall/subscription/${version}/${endpoint}`;\n\nconst requestBody = {\n    \"method\": \"WEB\",\n    \"msisdn\": `tel:${msisdn}`,\n    \"receiptRequest\": {\n        \"notifyURL\": \"http://127.0.0.1:1883/ideabiz/smsresponse\",\n        \"callbackData\": \"Test Successful\"\n    }     \n};\n\n\nmsg.method = \"POST\";\nmsg.url = url;\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = `Bearer ${accessToken}`;\nmsg.payload = JSON.stringify(requestBody);\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
+        "x": 980,
         "y": 540,
         "wires": [
             [
@@ -413,16 +414,16 @@
         "id": "210a5050cdbcd666",
         "type": "debug",
         "z": "2ac5ed59b103973f",
-        "name": "debug 10",
+        "name": "SET ADD SUB PAYLOAD",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1050,
+        "x": 990,
         "y": 600,
         "wires": []
     },
@@ -430,7 +431,7 @@
         "id": "ddd7706c5eb59d47",
         "type": "http request",
         "z": "2ac5ed59b103973f",
-        "name": "",
+        "name": "ADD SUB REQUEST",
         "method": "use",
         "ret": "txt",
         "paytoqs": "ignore",
@@ -455,7 +456,7 @@
                 "valueValue": ""
             }
         ],
-        "x": 1050,
+        "x": 1240,
         "y": 540,
         "wires": [
             [
@@ -468,15 +469,16 @@
         "id": "b6e7c92aac8213cc",
         "type": "debug",
         "z": "2ac5ed59b103973f",
-        "name": "debug 11",
+        "name": "ADD SUB RESPONSE",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1250,
+        "x": 1270,
         "y": 600,
         "wires": []
     },
@@ -485,7 +487,7 @@
         "type": "function",
         "z": "2ac5ed59b103973f",
         "name": "function 5",
-        "func": "const baseUrl = \"https://ideabiz.lk/\";\nconst version = \"v3\";\nconst endpoint = \"status\";\nconst msisdn = \"tel:+94766691500\";\nconst payload = JSON.parse(msg.payload);\nconst accessToken = payload.access_token;\nflow.set(\"accessToken\", accessToken);\n\n\nconst url = `${baseUrl}apicall/subscription/${version}/${endpoint}/${msisdn}`;\n\n\nmsg.method = \"POST\";\nmsg.url = url;\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = `Bearer ${accessToken}`;\n\n\n\nreturn msg;\n",
+        "func": "var payload = {\n    action: \"STATE_CHANGE\",\n    method: \"WEB\",\n    msisdn: \"94766691500\", // The mobile number of the user to subscribe\n    appID: \"13703\", // Your application ID\n    serviceID: \"58512\", // The service ID\n    status: \"UnSUBSCRIBED\"\n};\n\nmsg.payload = JSON.stringify(payload);\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -510,8 +512,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 690,
@@ -523,10 +525,10 @@
         "type": "http request",
         "z": "2ac5ed59b103973f",
         "name": "",
-        "method": "use",
+        "method": "GET",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "",
+        "url": "http://127.0.0.1:1880/ideabiz/notif",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -556,35 +558,6 @@
         ]
     },
     {
-        "id": "92006cd5c5d2e3f9",
-        "type": "inject",
-        "z": "2ac5ed59b103973f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 360,
-        "y": 940,
-        "wires": [
-            [
-                "5667a1a22cc2cc96"
-            ]
-        ]
-    },
-    {
         "id": "d87ed0c8a2952e45",
         "type": "debug",
         "z": "2ac5ed59b103973f",
@@ -593,11 +566,54 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 870,
         "y": 1000,
         "wires": []
+    },
+    {
+        "id": "b662d73fdb6cf7a6",
+        "type": "debug",
+        "z": "2ac5ed59b103973f",
+        "name": "GET TOKEN PAYLOAD",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "92006cd5c5d2e3f9",
+        "type": "inject",
+        "z": "2ac5ed59b103973f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"access_token\":\"3bec5681-618b-33e6-a801-6bb51dbe46bf\"}",
+        "payloadType": "json",
+        "x": 350,
+        "y": 940,
+        "wires": [
+            [
+                "5667a1a22cc2cc96"
+            ]
+        ]
     }
 ]

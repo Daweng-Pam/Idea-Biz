@@ -33,10 +33,10 @@
         "z": "2ac5ed59b103973f",
         "name": "",
         "url": "/ideabiz/notif",
-        "method": "get",
+        "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 1200,
+        "x": 1210,
         "y": 700,
         "wires": [
             [
@@ -146,6 +146,7 @@
         "y": 540,
         "wires": [
             [
+                "b662d73fdb6cf7a6",
                 "172ffcd47edf5bf2"
             ]
         ]
@@ -393,7 +394,7 @@
         "type": "function",
         "z": "2ac5ed59b103973f",
         "name": "SET ADD SUB REQUEST",
-        "func": "const baseUrl = \"https://ideabiz.lk/\";\nconst version = \"v3\";\nconst endpoint = \"subscribe\";\nconst payload = JSON.parse(msg.payload);\nconst accessToken = payload.access_token;\nflow.set(\"accessToken\", accessToken);\n\nconst msisdn = \"+94766691500\";\n\nconst url = `${baseUrl}apicall/subscription/${version}/${endpoint}`;\n\nconst requestBody = {\n    \"method\": \"WEB\",\n    \"msisdn\": `tel:${msisdn}`,\n    \"serviceID\": \"34dafb2f-7129-4978-a72e-65dc5c48dd1c\",\n    \"receiptRequest\": {\n        \"notifyURL\": \"http://127.0.0.1:1883/ideabiz/smsresponse\",\n        \"callbackData\": \"Test Successful\"\n    }     \n};\n\n\nmsg.method = \"POST\";\nmsg.url = url;\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = `Bearer ${accessToken}`;\nmsg.payload = JSON.stringify(requestBody);\n\nreturn msg;\n",
+        "func": "const baseUrl = \"http://ideabiz.lk/\";\nconst version = \"v3\";\nconst endpoint = \"subscribe\";\nconst payload = JSON.parse(msg.payload);\nconst accessToken = payload.access_token;\nflow.set(\"accessToken\", accessToken);\n\nconst msisdn = \"+94766691500\";\n\nconst url = `${baseUrl}apicall/subscription/${version}/${endpoint}`;\n\nconst requestBody = {\n    \"method\": \"WEB\",\n    \"msisdn\": `tel:${msisdn}`,\n    \"receiptRequest\": {\n        \"notifyURL\": \"http://127.0.0.1:1883/ideabiz/smsresponse\",\n        \"callbackData\": \"Test Successful\"\n    }     \n};\n\n\nmsg.method = \"POST\";\nmsg.url = url;\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = `Bearer ${accessToken}`;\nmsg.payload = JSON.stringify(requestBody);\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -418,8 +419,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 990,
@@ -486,7 +487,7 @@
         "type": "function",
         "z": "2ac5ed59b103973f",
         "name": "function 5",
-        "func": "const baseUrl = \"https://ideabiz.lk/\";\nconst version = \"v3\";\nconst endpoint = \"status\";\nconst msisdn = \"tel:+94766691500\";\nconst payload = JSON.parse(msg.payload);\nconst accessToken = payload.access_token;\nflow.set(\"accessToken\", accessToken);\n\n\nconst url = `${baseUrl}apicall/subscription/${version}/${endpoint}/${msisdn}`;\n\n\nmsg.method = \"POST\";\nmsg.url = url;\nmsg.headers = {};\nmsg.headers[\"Authorization\"] = `Bearer ${accessToken}`;\n\n\n\nreturn msg;\n",
+        "func": "var payload = {\n    action: \"STATE_CHANGE\",\n    method: \"WEB\",\n    msisdn: \"94766691500\", // The mobile number of the user to subscribe\n    appID: \"13703\", // Your application ID\n    serviceID: \"58512\", // The service ID\n    status: \"UnSUBSCRIBED\"\n};\n\nmsg.payload = JSON.stringify(payload);\n\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -511,8 +512,8 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
+        "complete": "true",
+        "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
         "x": 690,
@@ -524,10 +525,10 @@
         "type": "http request",
         "z": "2ac5ed59b103973f",
         "name": "",
-        "method": "use",
+        "method": "POST",
         "ret": "txt",
         "paytoqs": "ignore",
-        "url": "",
+        "url": "http://127.0.0.1:1880/ideabiz/notif",
         "tls": "",
         "persist": false,
         "proxy": "",
@@ -557,35 +558,6 @@
         ]
     },
     {
-        "id": "92006cd5c5d2e3f9",
-        "type": "inject",
-        "z": "2ac5ed59b103973f",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 360,
-        "y": 940,
-        "wires": [
-            [
-                "5667a1a22cc2cc96"
-            ]
-        ]
-    },
-    {
         "id": "d87ed0c8a2952e45",
         "type": "debug",
         "z": "2ac5ed59b103973f",
@@ -594,11 +566,54 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
         "x": 870,
         "y": 1000,
         "wires": []
+    },
+    {
+        "id": "b662d73fdb6cf7a6",
+        "type": "debug",
+        "z": "2ac5ed59b103973f",
+        "name": "GET TOKEN PAYLOAD",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "92006cd5c5d2e3f9",
+        "type": "inject",
+        "z": "2ac5ed59b103973f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"access_token\":\"3bec5681-618b-33e6-a801-6bb51dbe46bf\"}",
+        "payloadType": "json",
+        "x": 350,
+        "y": 940,
+        "wires": [
+            [
+                "5667a1a22cc2cc96"
+            ]
+        ]
     }
 ]
